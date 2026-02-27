@@ -10,8 +10,11 @@ tuav_cameras()
 
 #### load images ####
 
+#' I recommend not more than 1000 images per folder, because the return would
+#' exceed the allocated RAM space. E.g. I run it with 1883 files and got the error:
+#' " result would exceed 2^31-1 bytes"
 # path to folder containing the RJPG images
-image_path = "C:/Users/ptandler/Documents/BurrelCreekProject/Year2_2025/02.Data/01.Selkirk/02.Raw_Data/03.Sensor_Data/02.H20T/2025-11-28/03.H20T/ChannelAll_selection/test"
+image_path = "C:/Users/ptandler/Documents/24-040_RDKB_BurrelCreek/Year1_2024/01.Data/01.Selkirk/02.Raw_Data/04.H20T/CompleteAOI_001-003/Thermal_JPG2"
 
 # creates an internal object for processing
 # flight height is set when planning the drone mission. 
@@ -30,10 +33,13 @@ thermal_uav <- tuav_create(path = image_path,
 #' T_air ambient temperature (°C) rel_hum relative humidity (%), and sky clear TRUE or FALSE
 #' Those parameters should come from measurements on site, Airdata, flight logs, spotwx
 #' Estimate emissivity for target surface
+#' I would keep the same parameters for the same scene, unsless each photo is processed individually.
+#' Choosing e.g. separate set of parameters for two separate subsets of the images 
+#'  would probably result in artefacts in the resulting orthomosaic
 thermal_uav_correct <- tuav_correct(thermal_uav,          
                                     flight_height = 120,   # in meters
-                                    T_air = 0,         # in °C
-                                    rel_hum = 66,       # in %
+                                    T_air = 11,         # in °C
+                                    rel_hum = 33,       # in %
                                     SKC = TRUE,
                                     emiss = 0.985)
 
@@ -41,7 +47,7 @@ thermal_uav_correct <- tuav_correct(thermal_uav,
 
 #' set output path. Sometimes it throws an error if the path is too long, 
 #' consider creating a temporary output folder with shorter path
-output_path = "C:/Users/ptandler/Documents/BurrelCreekProject/Year2_2025/02.Data/01.Selkirk/02.Raw_Data/03.Sensor_Data/02.H20T/out120m"
+output_path = "C:/Users/ptandler/Documents/24-040_RDKB_BurrelCreek/Year1_2024/01.Data/01.Selkirk/02.Raw_Data/04.H20T/corrected_out2"
 tuav_export(thermal_uav_correct,
             export_path = output_path) 
 # the resulting images have tif format with values in centi kelvin (27315 cK = 0°C)
