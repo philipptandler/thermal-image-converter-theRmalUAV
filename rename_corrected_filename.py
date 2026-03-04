@@ -1,7 +1,7 @@
 import os
 
 # Replace this with your folder path
-folder_path = r"C:/Users/ptandler/Documents/24-040_RDKB_BurrelCreek/Year1_2024/01.Data/01.Selkirk/02.Raw_Data/04.H20T/CompleteAOI_001-003/corrected"
+folder_path = r"C:/Users/.../corrected"
 
 # Loop through all files in the folder
 for filename in os.listdir(folder_path):
