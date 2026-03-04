@@ -37,8 +37,8 @@ You might need to install the `terra` package.
 After converting loads of image files into TIF format and correcting for 
 atmospheric conditions, the files are called `original_filename_corrected.tif`. 
 It might be useful to rename and remove the `_corrected` from the resulting file names
-for shorter file paths and consistent names. For this open `rename_corrected_filenames.py`,
-and specify the path containing the folder with the files to be renamed. 
+for shorter file paths and consistent names. For this openthe Python scrit `rename_corrected_filenames.py`,
+specify the path containing the folder with the files to be renamed and run the script.
 
 ### Output
 
