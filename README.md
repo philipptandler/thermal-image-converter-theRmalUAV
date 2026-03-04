@@ -9,10 +9,10 @@ to process UAV-based thermal images.
 
 Clone the repository:
 
-    ```sh
-    git clone https://github.com/philipptandler/thermal-image-converter-theRmalUAV.git
-    cd thermal-image-converter-theRmalUAV
-    ```
+```sh
+git clone https://github.com/philipptandler/thermal-image-converter-theRmalUAV.git
+cd thermal-image-converter-theRmalUAV
+```
 
 Run `installer.R` to install the required packages.
 
